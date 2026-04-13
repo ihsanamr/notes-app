@@ -1,0 +1,59 @@
+:root {
+    --primary-color: #2d3436;
+    --accent-color: #6c5ce7;
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #2d3436;
+    --text-muted: #636e72;
+    --danger-color: #d63031;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+#notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: start;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: 50px;
+    grid-column: 1 / -1;
+    font-size: 1.2rem;
+}
+
+.main-page {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+    .main-page {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 5rem;
+    }
+}
