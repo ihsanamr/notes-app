@@ -1,13 +1,14 @@
 :root {
-    --primary-color: #2d3436;
-    --accent-color: #6c5ce7;
-    --bg-color: #f4f7f6;
+    --primary-color: #1a1a2e;
+    --accent-color: #4361ee;
+    --bg-color: #f8f9fa;
     --card-bg: #ffffff;
-    --text-color: #2d3436;
-    --text-muted: #636e72;
-    --danger-color: #d63031;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --radius: 8px;
+    --text-color: #2b2d42;
+    --text-muted: #8d99ae;
+    --danger-color: #ef233c;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 15px 40px rgba(67, 97, 238, 0.1);
+    --radius: 16px;
 }
 
 * {

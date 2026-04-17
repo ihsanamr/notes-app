@@ -21,54 +21,57 @@ class NoteItem extends HTMLElement {
     this.innerHTML = `
       <style>
         .card {
-          background: #fff;
-          border-radius: 8px;
-          box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+          background: #ffffff;
+          border-radius: 16px;
+          border: 1px solid rgba(0,0,0,0.03);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.04);
           padding: 24px;
           height: 100%;
           display: flex;
           flex-direction: column;
-          transition: transform 0.2s, box-shadow 0.2s; 
-          animation: fadeIn 0.5s ease-in-out;
+          transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+          animation: fadeIn 0.5s ease-out;
         }
         
         .card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+          transform: translateY(-8px);
+          box-shadow: 0 15px 40px rgba(67, 97, 238, 0.1);
         }
 
         .card h3 {
           margin-top: 0;
-          margin-bottom: 8px;
-          font-size: 1.25rem;
-          color: #2d3436;
+          margin-bottom: 6px;
+          font-size: 1.35rem;
+          color: #1a1a2e;
+          font-weight: 700;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
         }
 
         .card .date {
-          font-size: 0.85rem;
-          color: #b2bec3;
-          margin-bottom: 16px;
+          font-size: 0.82rem;
+          color: #8d99ae;
+          margin-bottom: 20px;
+          font-weight: 500;
           display: block;
         }
 
         .card p {
           margin-top: 0;
-          font-size: 0.95rem;
-          color: #636e72;
-          margin-bottom: 16px;
+          font-size: 1rem;
+          color: #4a4e69;
+          margin-bottom: 24px;
           display: -webkit-box;
-          -webkit-line-clamp: 6;
+          -webkit-line-clamp: 5;
           -webkit-box-orient: vertical;
           overflow: hidden;
-          line-height: 1.6;
+          line-height: 1.7;
         }
 
         .action-buttons {
           display: flex;
-          gap: 10px;
+          gap: 12px;
           margin-top: auto;
         }
 
@@ -76,36 +79,37 @@ class NoteItem extends HTMLElement {
           flex: 1;
           border: none;
           color: white;
-          padding: 8px 12px;
-          border-radius: 6px;
+          padding: 10px 14px;
+          border-radius: 10px;
           cursor: pointer;
-          transition: background 0.2s, transform 0.1s;
+          transition: all 0.2s ease;
           font-weight: 600;
-          font-family: 'Poppins', sans-serif;
+          font-family: inherit;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         
         .delete-btn {
-          background: #ff7675;
+          background: transparent;
+          color: #ef233c;
+          border: 2px solid rgba(239, 35, 60, 0.1);
         }
 
         .delete-btn:hover {
-          background: #d63031;
+          background: #ef233c;
+          color: white;
+          border-color: #ef233c;
         }
 
         .archive-btn {
-          background: #f1c40f; 
-          color: #2d3436;
+          background: rgba(67, 97, 238, 0.05);
+          color: #4361ee;
+          border: 2px solid transparent;
         }
 
         .archive-btn:hover {
-           background: #f39c12;
-        }
-        
-        .delete-btn:active, .archive-btn:active {
-            transform: scale(0.95);
+          background: rgba(67, 97, 238, 0.1);
         }
       </style>
       

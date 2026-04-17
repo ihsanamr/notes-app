@@ -10,75 +10,93 @@ class NoteInput extends HTMLElement {
     this.innerHTML = `
       <style>
         .form-container {
-          background: #fff;
-          padding: 24px;
-          border-radius: 8px;
-          box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          padding: 32px;
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.04);
           margin-bottom: 32px;
           max-width: 600px;
           margin-left: auto;
           margin-right: auto;
-
           position: sticky;
-          top: 20px;
+          top: 100px;
+          z-index: 90;
         }
         .form-title {
-          margin-bottom: 20px;
+          margin-bottom: 24px;
           text-align: center;
-          color: #2d3436;
+          color: #1a1a2e;
+          font-size: 1.6rem;
+          font-weight: 700;
         }
         .form-group {
-          margin-bottom: 16px;
+          margin-bottom: 24px;
         }
         .form-group label {
           display: block;
-          margin-bottom: 8px;
+          margin-bottom: 10px;
           font-weight: 600;
-          font-size: 0.9rem;
+          color: #4a4e69;
+          font-size: 0.95rem;
         }
-        input, textarea {
+        #note-form input, #note-form textarea {
           width: 100%;
-          padding: 12px;
-          border: 1px solid #dfe6e9;
-          border-radius: 6px;
+          padding: 14px 18px;
+          background: rgba(248, 249, 250, 0.7);
+          border: 2px solid transparent;
+          border-radius: 12px;
           font-family: inherit;
           font-size: 1rem;
-          transition: border-color 0.3s;
+          color: #2b2d42;
+          transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        input:focus, textarea:focus {
+        #note-form input::placeholder, #note-form textarea::placeholder {
+          color: #abb5c4;
+        }
+        #note-form input:focus, #note-form textarea:focus {
           outline: none;
-          border-color: #6c5ce7;
-          box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+          background: #ffffff;
+          border-color: rgba(67, 97, 238, 0.5);
+          box-shadow: 0 4px 15px rgba(67, 97, 238, 0.1);
         }
-        textarea {
+        #note-form textarea {
           resize: vertical;
-          min-height: 120px;
+          min-height: 140px;
+          line-height: 1.6;
         }
-        button {
-          background-color: #6c5ce7;
+        #note-form button {
+          background-color: #4361ee;
           color: white;
           border: none;
-          padding: 14px;
-          border-radius: 6px;
+          padding: 16px;
+          border-radius: 12px;
           cursor: pointer;
           font-weight: 600;
           font-family: inherit;
-          font-size: 1rem;
+          font-size: 1.05rem;
           width: 100%;
-          transition: background 0.3s;
+          transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+          box-shadow: 0 4px 15px rgba(67, 97, 238, 0.2);
         }
-        button:hover {
-          background-color: #5649c0;
+        #note-form button:hover {
+          background-color: #3b55d9;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(67, 97, 238, 0.3);
         }
         
         .error-message {
-          color: #d63031;
+          color: #ef233c;
           font-size: 0.85rem;
-          margin-top: 6px;
+          margin-top: 8px;
+          font-weight: 500;
           display: none;
         }
         .input-error {
-          border-color: #d63031 !important;
+          border-color: rgba(239, 35, 60, 0.5) !important;
+          background: #fff !important;
         }
       </style>
 

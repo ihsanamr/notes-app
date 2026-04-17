@@ -5,11 +5,11 @@ class AppBar extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["title"];
+    return ["app-title"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === "title") {
+    if (name === "app-title") {
       this.render();
     }
   }
@@ -31,20 +31,26 @@ class AppBar extends HTMLElement {
   }
 
   render() {
-    const title = this.getAttribute("title") || "Notes";
+    const title = this.getAttribute("app-title") || "Notes";
     this._shadowRoot.innerHTML = `
       <style>
         :host {
           display: block;
-          background-color: #6c5ce7;
-          color: white;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+          color: #1a1a2e;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
         }
         
         div.container {
-          max-width: 1000px;
+          max-width: 1200px;
           margin: 0 auto;
-          padding: 24px 20px;
+          padding: 16px 24px;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -52,7 +58,8 @@ class AppBar extends HTMLElement {
 
         h1 {
           margin: 0;
-          font-size: 1.8rem;
+          font-size: 1.6rem;
+          font-weight: 700;
           font-family: 'Poppins', sans-serif;
         }
 
@@ -65,13 +72,13 @@ class AppBar extends HTMLElement {
         }
 
         .icon-btn {
-          background: transparent;
+          background: rgba(67, 97, 238, 0.05);
           border: none;
-          color: white;
+          color: #4a4e69;
           cursor: pointer;
-          padding: 8px;
-          border-radius: 50%;
-          transition: background-color 0.2s;
+          padding: 10px;
+          border-radius: 12px;
+          transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -79,37 +86,45 @@ class AppBar extends HTMLElement {
         }
 
         .icon-btn:hover {
-          background-color: rgba(255, 255, 255, 0.2);
+          background-color: rgba(67, 97, 238, 0.1);
+          color: #4361ee;
+          transform: translateY(-2px);
         }
 
         .icon-btn svg {
-          width: 32px;
-          height: 32px;
+          width: 28px;
+          height: 28px;
           fill: currentColor;
+          transition: fill 0.3s;
         }
 
         .badge {
           position: absolute;
-          top: 0;
-          right: 0;
-          background-color: #ff7675;
+          top: -4px;
+          right: -4px;
+          background-color: #ef233c;
           color: white;
           font-family: 'Poppins', sans-serif;
           font-size: 0.75rem;
           font-weight: bold;
-          min-width: 20px;
-          height: 20px;
+          min-width: 22px;
+          height: 22px;
+          line-height: 22px;
+          text-align: center;
           border-radius: 50%;
+          border: 2px solid #fff;
           display: none;
-          align-items: center;
-          justify-content: center;
-          transform: translate(25%, -25%);
-          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-          z-index: 10;
+          box-shadow: 0 4px 8px rgba(239, 35, 60, 0.3);
         }
         
         .badge.visible {
-          display: flex;
+          display: block;
+          animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+          0% { transform: scale(0); opacity: 0; }
+          100% { transform: scale(1); opacity: 1; }
         }
       </style>
       
